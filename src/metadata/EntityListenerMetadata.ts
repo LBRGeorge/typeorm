@@ -82,7 +82,7 @@ export class EntityListenerMetadata {
      */
     protected callEntityEmbeddedMethod(entity: ObjectLiteral, propertyPaths: string[]): void {
         const propertyPath = propertyPaths.shift();
-        if (!propertyPath || !entity[propertyPath])
+        if (!propertyPath || !entity[propertyPath] || typeof entity[propertyPath][this.propertyName] !== 'function')
             return;
 
         if (propertyPaths.length === 0) {
